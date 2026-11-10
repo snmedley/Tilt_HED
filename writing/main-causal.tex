@@ -100,7 +100,27 @@
 % \begin{assumption} environments. The reader should finish this section
 % knowing exactly what quantity the paper targets and under what conditions
 % it is well-defined.
-[Placeholder.]
+Let $X_0$ denote a vector of baseline covariates. At the beginning of Stage 1, each participant is randomly assigned to a first-stage intervention $Z_1 \in \{-1, 1\}$. The known Stage 1 randomization probabilities are $P(Z_1 = z_1 | X_0)$. During Stage 1, participants are micro-randomized at $t^* -1$ decision points. That is, participants are randomized to an intervention to an intervention $A_t \in \{0,1\}$ at each time point $t = 1, \cdots, t^* - 1$. All participants transition to Stage 2 at time $t = t^*$ and are randomized to a second-stage intervention $Z_2$. The possible values for $Z_2$ and the known Stage 2 randomization probabilities depend on the embedded SMART design. 
+
+\quad Unrestricted SMART: $Z_2 \in \{0,1\}$, $P(Z_2 = z_2)$
+
+\quad Restricted SMART, non-responders re-randomized: $Z_2 \in \{-1, 0, 1\}$, $P(Z_2 = z_2 | R)$
+
+\quad Restricted SMART, non-responders to $Z_1 = 1$ re-randomized: $Z_2 \in \{-1, 0, 1\}$, $P(Z_2 = z_2 | R, Z_1)$ \textcolor{blue}{(technically should condition on $Z_1$)}
+
+Participants are micro-randomized at $T-t^*$ decision points in Stage 2 (such that there are $T$ total decision points for micro-randomization across Stages 1 and 2). That is, participants are randomized to an intervention $A_t \in \{0,1\}$ at each time point $t = t^* + 1, \cdots, T$. Across Stages 1 and 2, we use $X_t$ to denote individual and contextual information collected at the $t$-th time point, which is measured before receiving intervention $A_t$. We let $Y_{t+1}$ denote the proximal response which is observed after receiving intervention $A_t$. The collection of observed data is
+\begin{equation*}
+    X_0, Z_1, X_1, A_1, Y_2, \cdots Z_T, X_T, A_T, Y_{T+1}
+\end{equation*}
+
+We use overbars to denote full history (e.g., $\bar{A} = (A_1, A_2, \ldots, A_T)$). In addition, we let $H_t = (\bar{X}_t, \bar{Z}_t, \bar{A}_t, \bar{Y}_t)$ denote the complete history of observable information up to $t$. The micro-randomization probabilities are also known and are denoted by $P(A_t = a | H_t) = p_t(a_t | H_t)$.
+
+Note that the assigned Stage 1 and Stage 2 interventions are part of the history $H_t$. In AIMS, we compare JITAI plus self-monitoring versus self-monitoring alone. Only participants in the JITAI arm undergo micro-randomization, so that $p_t(a_t | H_t, Z_1 = -1) = 0$.
+
+Note that Sustain is an unrestricted SMART, with three SMART stages (biweekly slow time-scale decision points). In addition, all participants undergo micro-randomization. \textcolor{blue}{If we are using Sustain as a data example but we expect most HEDs to have two SMART stages, should we put two time-point case $Z_1, Z_2$ in main text and three time-point case in supplement?}
+
+Define potential outcomes and DTRs next. 
+
 
 \begin{assumption}[Consistency, no interference, and sequential randomization]
 \label{ass:core}
